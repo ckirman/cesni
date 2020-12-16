@@ -1,21 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import {createAppContainer}from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack'
+import HomeScreen from './src/screens/HomeScreen';
+import CartScreen from './src/screens/CartScreen';
+import AccountScreen from './src/screens/AccountScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const navigator=createStackNavigator(
+  {
+    home:HomeScreen,
+    cart:CartScreen,
+    account:AccountScreen
   },
-});
+  {
+    initialRouteName:'account',
+    defaultNavigationOptions:{
+      title:'Çeşni'
+    }
+  }
+
+);
+
+export default createAppContainer(navigator);
